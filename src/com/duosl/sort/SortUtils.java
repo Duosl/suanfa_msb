@@ -20,30 +20,35 @@ public class SortUtils {
      * @param iSort 自定义算法
      */
     public static void sortChecker(ISort iSort) {
-        LogUtils.setDebug(false);
+        // LogUtils.setDebug(false);
         int[][] arr = randomArr(10000, 10);
+        boolean success = true;
         for (int i = 0; i < arr.length; i++) {
             int[] originArr = Arrays.copyOf(arr[i], arr[i].length);
             int[] result = iSort.sort(Arrays.copyOf(arr[i], arr[i].length));
             boolean b = sortChecker(arr[i], result);
             if (!b) {
-                System.err.println("==========> 您的算法出错了~ ============");
-                System.err.println("原数组为：" + Arrays.toString(originArr));
-                System.err.println("您的排序：" + Arrays.toString(result));
-                System.err.println("=======================================");
+                success = false;
+                LogUtils.error("==========> 您的算法出错了~ ============");
+                LogUtils.printErrorArr("原数组为：", originArr);
+                LogUtils.printErrorArr("您的排序：", result);
+                LogUtils.error("=======================================");
                 break;
             } else {
-                System.out.println("【TRUE】" + Arrays.toString(result));
+                // LogUtils.log("【TRUE】" + Arrays.toString(result));
             }
+        }
+        if (success) {
+            LogUtils.log("True");
         }
     }
 
     /**
-     * 测试两个算法的事件
+     * 测试两个算法的时间
      */
     public static void sortTestO(ISort iSort, ISort2 iSort2) {
-        LogUtils.setDebug(false);
-        int[][] arr = randomArr(30, 100000);
+        // LogUtils.setDebug(false);
+        int[][] arr = randomArr(1000, 1000);
         Callable<Boolean> task1 = () -> {
             LogUtils.log("task1 start...");
             long start1 = System.currentTimeMillis();
@@ -118,9 +123,9 @@ public class SortUtils {
 
     private static String calcTime(long time) {
         if (time > 10_000L && time <= 999_999) {
-            return time/1000.f + "s";
+            return time / 1000.f + "s";
         } else if (time > 999_999) {
-            return time/1000.f/1000.f + "min";
+            return time / 1000.f / 1000.f + "min";
         } else {
             return time + "ms";
         }

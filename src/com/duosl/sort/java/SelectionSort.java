@@ -18,9 +18,9 @@ import com.duosl.sort.SortUtils;
 public class SelectionSort implements SortUtils.ISort, SortUtils.ISort2 {
 
     public static void main(String[] args) {
-        mytest();
+        // mytest();
         // 测试算法时间
-        // testO();
+        testO();
 
         // 算法正确性校验
         // SortUtils.sortChecker(new SelectionSort());
@@ -58,7 +58,6 @@ public class SelectionSort implements SortUtils.ISort, SortUtils.ISort2 {
      * TODO: 应该还可以优化
      */
     private int[] sortEnhance(int[] arr) {
-        LogUtils.printArr("待排序数组为：", arr);
         int middleIndex = (int) (arr.length / 2f + 0.5f);
         for (int i = 0; i < middleIndex; i++) {
             int minIndex = i;
@@ -83,11 +82,13 @@ public class SelectionSort implements SortUtils.ISort, SortUtils.ISort2 {
     }
 
     private static void mytest() {
-        int[] arr = new int[]{10, 13, 18, 9, 7, 16, 4, 8, 4, 0};
-        LogUtils.setDebug(true);
+        int[] arr = new int[]{10, 13, 18, 9, 7, 16, 11, 8, 4, 0};
+        // LogUtils.setDebug(true);
+        LogUtils.printArr("待排序数组为：", arr);
         SelectionSort selection = new SelectionSort();
         // selection.sortBasic(arr);
         selection.sortEnhance(arr);
+        LogUtils.printArr("排序完成：", arr);
     }
 
     /**

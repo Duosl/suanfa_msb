@@ -6,7 +6,7 @@
 > 支持算法自测，详情参考[SortUtils.java](src/com/duosl/sort/SortUtils.java)
 
 - [x] [选择排序](src/com/duosl/sort/java/SelectionSort.java)  update 2021.01.29
-- [ ] 冒泡排序
+- [x] [冒泡排序](src/com/duosl/sort/java/BubbleSort.java)  update 2021.02.21
 - [ ] 插入排序
 - [ ] 快速排序
 - [ ] 堆排序
